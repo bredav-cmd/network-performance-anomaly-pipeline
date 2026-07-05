@@ -2,7 +2,7 @@ venv/
 *.db
 __pycache__/
 
-#PyCharm project settings - IDE-specific,clutter not relevant to other users/machines
+# PyCharm project settings - IDE-specific, clutter not relevant to other users/machines
 .idea/
 
 # Raw Kaggle competition data - excluded due to competition redistribution
