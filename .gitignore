@@ -1,0 +1,10 @@
+venv/
+*.db
+__pycache__/
+
+#PyCharm project settings - IDE-specific,clutter not relevant to other users/machines
+.idea/
+
+# Raw Kaggle competition data - excluded due to competition redistribution
+# terms; dataset source and download instructions in README
+data/raw/*.csv
