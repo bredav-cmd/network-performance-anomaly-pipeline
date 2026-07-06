@@ -16,16 +16,23 @@ Raw data files are not included in this repository (see `.gitignore`) due to com
 1. Join the competition on Kaggle and download the data
 2. Place the training CSV at `data/raw/cell_kpi_train.csv`
 
+**Example rows** (small illustrative excerpt, not the full dataset):
+
+| Time | CellName | PRBUsageUL | PRBUsageDL | meanThr_DL | meanThr_UL | Unusual |
+|------|----------|------------|------------|------------|------------|---------|
+| 10:45 | 3BLTE | 11.642 | 1.393 | 0.370 | 0.041 | 1 |
+| 9:45  | 1BLTE | 21.791 | 1.891 | 0.537 | 0.268 | 1 |
+| 7:45  | 9BLTE | 0.498  | 0.398 | 0.015 | 0.010 | 1 |
+| 2:45  | 4ALTE | 1.891  | 1.095 | 0.940 | 0.024 | 0 |
+
 ## Pipeline Architecture
 
-```
-src/
-├── etl.py            # Extract: loads raw CSV (handles non-UTF-8 encoding)
-├── transform.py      # Transform: cleans data, engineers Site/Sector/Time features
-├── load.py           # Load: writes clean data to a SQLite database
-├── main_pipeline.py  # Orchestrates extract -> transform -> load
-└── model.py          # Unsupervised anomaly detection + investigation
-```
+    src/
+    ├── etl.py            # Extract: loads raw CSV (handles non-UTF-8 encoding)
+    ├── transform.py      # Transform: cleans data, engineers Site/Sector/Time features
+    ├── load.py           # Load: writes clean data to a SQLite database
+    ├── main_pipeline.py  # Orchestrates extract -> transform -> load
+    └── model.py          # Unsupervised anomaly detection + investigation
 
 ### Transform step highlights
 - Fixed a Spanish-locale Excel error string (`#¡VALOR!`) found in the `maxUE_UL+DL` column, using `pd.to_numeric(errors='coerce')`
