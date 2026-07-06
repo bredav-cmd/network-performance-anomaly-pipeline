@@ -25,6 +25,7 @@ src/
 ├── load.py           # Load: writes clean data to a SQLite database
 ├── main_pipeline.py  # Orchestrates extract -> transform -> load
 └── model.py          # Unsupervised anomaly detection + investigation
+```
 
 ### Transform step highlights
 - Fixed a Spanish-locale Excel error string (`#¡VALOR!`) found in the `maxUE_UL+DL` column, using `pd.to_numeric(errors='coerce')`
